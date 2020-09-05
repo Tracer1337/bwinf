@@ -29,8 +29,6 @@ const randomizeArray = require("../lib/randomizeArray.js")
 
 const strongestPlayer = players.reduce((strongest, current) => current.strength > strongest.strength ? strongest = current : strongest, players[0])
 
-console.log("Strongest Player:", strongestPlayer)
-
 function simluateMatch(firstPlayer, secondPlayer) {
     return Math.random() <= (firstPlayer.strength / (firstPlayer.strength + secondPlayer.strength)) ? 0 : 1
 }
@@ -143,6 +141,22 @@ function simulateTournamentVariant(tournamentFunction, iterations) {
 
 const iterations = 1e5
 
-console.log("Liga:", simulateTournamentVariant(simulateLeague, iterations))
-console.log("KO:", simulateTournamentVariant(simulateKO, iterations))
-console.log("KOx5:", simulateTournamentVariant(simulateKOx5, iterations))
+const ligaPercentage = simulateTournamentVariant(simulateLeague, iterations)
+const koPercentage = simulateTournamentVariant(simulateKO, iterations)
+const kox5Percentage = simulateTournamentVariant(simulateKOx5, iterations)
+
+console.log("Iterationen:", iterations)
+
+console.table({
+    "Liga": {
+        "Durchschnitt (%)": Math.round(ligaPercentage * 100)
+    },
+
+    "KO": {
+        "Durchschnitt (%)": Math.round(koPercentage * 100)
+    },
+
+    "KOx5": {
+        "Durchschnitt (%)": Math.round(kox5Percentage * 100)
+    },
+})

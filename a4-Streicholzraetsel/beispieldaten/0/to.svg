@@ -1,0 +1,11 @@
+
+            <svg width="101" height="187.8" viewBox="0 -1.868 1.01 1.8780000000000001" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 0 0 L 0 -1" stroke="black" stroke-width="0.02"/>
+    <path d="M 0 -1 L 0.5 -1.867" stroke="black" stroke-width="0.02"/>
+    <path d="M 0 0 L 0.5 -0.867" stroke="black" stroke-width="0.02"/>
+    <path d="M 0.5 -0.867 L 0.5 -1.867" stroke="black" stroke-width="0.02"/>
+    <path d="M 0.5 -0.867 L 1 -0.001" stroke="black" stroke-width="0.02"/>
+    <path d="M 1 -0.001 L 1 -1.001" stroke="black" stroke-width="0.02"/>
+    <path d="M 1 -1.001 L 0.5 -1.868" stroke="black" stroke-width="0.02"/>
+            </svg>
+        
