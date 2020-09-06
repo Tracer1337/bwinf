@@ -1,0 +1,25 @@
+{
+  "name": "bwinf",
+  "version": "1.0.0",
+  "description": "Der 39. Bundeswettbewerb Informatik – 1. Runde\r ==============================================",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tracer1337/bwinf.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tracer1337/bwinf/issues"
+  },
+  "homepage": "https://github.com/Tracer1337/bwinf#readme",
+  "dependencies": {
+    "chalk": "^4.1.0"
+  }
+}
