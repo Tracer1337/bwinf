@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>BWINF Aufgabe 4</title>
+
+    <style>
+        .img {
+            max-height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <template id="example-template">
+        <div class="my-5">
+            <h3 class="mb-4">Beispiel <span id="number"></span></h3>
+            
+            <div class="card-group">
+                <div class="card">
+                    <img id="img-from" class="card-img-top img" />
+            
+                    <div class="card-body">
+                        <h5 class="card-title">Vorher</h5>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <img id="img-to" class="card-img-top img" />
+            
+                    <div class="card-body">
+                        <h5 class="card-title">Nachher</h5>
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <img id="img-solution" class="card-img-top img" />
+            
+                    <div class="card-body">
+                        <h5 class="card-title">Lösung</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <div id="root" class="container mt-3">
+        <h1>BWINF Aufgabe 4 (Streichholzrätsel)</h1>
+    </div>
+    
+    <script>
+        const container = document.getElementById("root")
+        const template = document.getElementById("example-template")
+
+        for (let i = 0; i <= 5; i++) {
+            const dir = `./beispieldaten/${i}`
+            const element = template.content.cloneNode(true)
+
+            const e = id => element.getElementById(id)
+
+            e("number").textContent = i
+            
+            e("img-from").src = dir + "/from.svg"
+            e("img-to").src = dir + "/to.svg"
+            e("img-solution").src = dir + "/solution.svg"
+
+            container.appendChild(element)
+        }
+    </script>
+</body>
+</html>
