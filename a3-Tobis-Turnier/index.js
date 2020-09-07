@@ -25,14 +25,18 @@ players = players.map((strength, i) => new Player(parseInt(strength), i))
  * Lösung
  */
 
+// Die Funktion habe ich selber geschrieben aber ausgelagert
 const randomizeArray = require("../lib/randomizeArray.js")
 
+// Den stärksten Spieler bestimmen
 const strongestPlayer = players.reduce((strongest, current) => current.strength > strongest.strength ? strongest = current : strongest, players[0])
 
+// Partie
 function simluateMatch(firstPlayer, secondPlayer) {
     return Math.random() <= (firstPlayer.strength / (firstPlayer.strength + secondPlayer.strength)) ? 0 : 1
 }
 
+// Variante: Liga
 function simulateLeague() {
     const playerWins = {}
 
@@ -68,6 +72,7 @@ function simulateLeague() {
     return winner
 }
 
+// Variante: KO
 function simulateKO() {
     let tournamentPlayers = randomizeArray(players)
 
@@ -90,6 +95,7 @@ function simulateKO() {
     return tournamentPlayers[0]
 }
 
+// Variante: KO x 5
 function simulateKOx5() {
     let tournamentPlayers = randomizeArray(players)
 
@@ -125,7 +131,8 @@ function simulateKOx5() {
     return tournamentPlayers[0]
 }
 
-function simulateTournamentVariant(tournamentFunction, iterations) {
+// Bestimme, wie oft der stärkste Spieler im Durchschnitt gewinnt
+function getTournamentWinrate(tournamentFunction, iterations) {
     let strongestPlayerWins = 0
 
     for (let i = 0; i < iterations; i++) {
@@ -141,22 +148,10 @@ function simulateTournamentVariant(tournamentFunction, iterations) {
 
 const iterations = 1e5
 
-const ligaPercentage = simulateTournamentVariant(simulateLeague, iterations)
-const koPercentage = simulateTournamentVariant(simulateKO, iterations)
-const kox5Percentage = simulateTournamentVariant(simulateKOx5, iterations)
+const ligaPercentage = getTournamentWinrate(simulateLeague, iterations)
+const koPercentage = getTournamentWinrate(simulateKO, iterations)
+const kox5Percentage = getTournamentWinrate(simulateKOx5, iterations)
 
-console.log("Iterationen:", iterations)
-
-console.table({
-    "Liga": {
-        "Durchschnitt (%)": Math.round(ligaPercentage * 100)
-    },
-
-    "KO": {
-        "Durchschnitt (%)": Math.round(koPercentage * 100)
-    },
-
-    "KOx5": {
-        "Durchschnitt (%)": Math.round(kox5Percentage * 100)
-    },
-})
+console.log("Die Gewinnrate für 'Liga' beträgt", Math.round(ligaPercentage * 100) + "%")
+console.log("Die Gewinnrate für 'KO' beträgt", Math.round(koPercentage * 100) + "%")
+console.log("Die Gewinnrate für 'KOx5' beträgt", Math.round(kox5Percentage * 100) + "%")

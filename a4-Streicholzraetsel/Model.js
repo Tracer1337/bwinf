@@ -5,6 +5,7 @@ const FLOATING_POINT_PRECISION = 100
 const SVG_MARGIN = 0.1
 const SVG_SIZE_FACTOR = 250
 
+// Grad zu Radianten konvertieren
 function degToRad(degrees) {
     return degrees * Math.PI / 180
 }
@@ -53,6 +54,7 @@ class Model {
             )).join("\n")
         }
 
+        // Alle Pfade werden hier drei mal eingefügt, damit die Farben nicht zu hell sind
         return `
             ${generateSVGTag([...fromModel.elements, ...toModel.elements])}
                 ${renderElements(fromModel.elements, "rgba(255, 0, 0, .5)")}
@@ -85,6 +87,7 @@ class Model {
         for (let move of moves) {
             const startPosition = move.depth > 0 ? depthPositionMap.get(move.depth - 1) : new Vector2d([0, 0])
 
+            // Das Vorzeichen des Winkels wird hier gewechselt, damit es im SVG richtig herum dargestellt wird
             const endPosition = startPosition.clone().add(new Vector2d([1, 0]).rotate(degToRad(-move.angle)))
 
             startPosition.roundTo(FLOATING_POINT_PRECISION)
@@ -101,10 +104,6 @@ class Model {
             ${generateSVGTag(this.elements)}
                 ${this.elements.map(({ from, to }) => (
                     `<path d="M ${from.value[0]} ${from.value[1]} L ${to.value[0]} ${to.value[1]}" stroke="black" stroke-width="${STROKE_WIDTH}"/>`
-                    // + `
-                    // <text x="${from.value[0]}" y="${from.value[1]}" font-size=".1">${from.value}</text>
-                    // <text x="${to.value[0]}" y="${to.value[1]}" font-size=".1">${to.value}</text>
-                    // `
                 )).join("\n")}
             </svg>
         `
