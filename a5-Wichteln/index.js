@@ -8,12 +8,14 @@ const content = fs.readFileSync(path.join(__dirname, "beispieldaten", `wichteln$
 
 const [n, ...lines] = content.split("\r\n")
 
+// Die Textdateien enthalten eine leere Zeile am Ende. Die wird hier entfernt.
 lines.pop()
 
+// Zeilen ("<Zahl> <Zahl> <Zahl>") zu Arrays ([<int>, <int>, <int>]) konvertieren
 const players = lines.map(line => line.trim().split(/\s+/).map(e => parseInt(e)))
 
 /**
- * Generate distribution
+ * Verteilung generieren
  */
 
 const distribution = {}
@@ -33,7 +35,7 @@ for (let i = 0; i < 3; i++) {
 }
 
 /**
- * Give missing players a value
+ * Übriggebliebenen Schülern einen Gegenstand zuweisen
  */
 
 const leftoverValues = []

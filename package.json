@@ -1,7 +1,7 @@
 {
   "name": "bwinf",
   "version": "1.0.0",
-  "description": "Der 39. Bundeswettbewerb Informatik – 1. Runde\r ==============================================",
+  "description": "Der 39. Bundeswettbewerb Informatik – 1. Runde",
   "main": "index.js",
   "directories": {
     "lib": "lib"
